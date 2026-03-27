@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri = "http://www.example.org/xai/DSL"
+			class = "com.example.xai.xAIModel.XAIModelPackage"
+			genModel = "model/generated/XAIModel.genmodel" />
+	</extension>
+</plugin>

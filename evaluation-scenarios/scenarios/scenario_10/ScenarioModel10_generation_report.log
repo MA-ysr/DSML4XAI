@@ -1,0 +1,11 @@
+[INFO] Generation report created for model: ScenarioModel10
+[INFO] Generation start: 2026-03-23 16:09:14.915
+[INFO] Resolved AI model: DecisionTree
+[INFO] Training policy: BasicClassification
+[INFO] Resolved explanation method: PDP (auto-selected)
+[INFO] Implementation binding: com.example.xai.generator.templates.PdpTemplate
+[INFO] Default details applied: medium
+[INFO] Required Python packages: scikit-learn, pandas, matplotlib
+[INFO] Notebook generated successfully: ScenarioModel10.ipynb
+[INFO] Generation end: 2026-03-23 16:09:14.919
+[INFO] Generation time (ms): 4

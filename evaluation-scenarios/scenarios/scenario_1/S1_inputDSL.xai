@@ -1,0 +1,10 @@
+model ScenarioModel1
+type MLPClassifier
+for user UserBeg
+  expertise = Beginner
+  format = [plainText]
+  purpose = learning
+data dataset
+  path = "data/breast_cancer.csv"
+  format = CSV
+  target = "target"

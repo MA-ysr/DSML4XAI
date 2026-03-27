@@ -1,0 +1,10 @@
+[INFO] Generation report created for model: ScenarioModel8
+[INFO] Generation start: 2026-03-23 15:58:14.069
+[INFO] Resolved AI model: RandomForest
+[INFO] Training policy: BasicClassification
+[INFO] Resolved explanation method: PDP (auto-selected)
+[INFO] Implementation binding: com.example.xai.generator.templates.PdpTemplate
+[INFO] Required Python packages: scikit-learn, pandas, matplotlib
+[INFO] Notebook generated successfully: ScenarioModel8.ipynb
+[INFO] Generation end: 2026-03-23 15:58:14.072
+[INFO] Generation time (ms): 3

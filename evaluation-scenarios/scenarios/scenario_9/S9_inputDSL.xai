@@ -1,0 +1,12 @@
+model ScenarioModel9
+type RandomForest
+for user UserPQ
+  expertise = Intermediate
+  format = [plainText, table]
+  details = medium
+  purpose = general
+data dataset
+  path = "data/breast_cancer.parquet"
+  format = PARQUET
+  target = "target"
+explain FeatureImportance

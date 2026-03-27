@@ -1,0 +1,74 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# DSML4XAI — .gitignore
+# Eclipse EMF / Xtext / Xtend workspace
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ─── Java compiled output ────────────────────────────────────────────────────
+bin/
+*.class
+target/
+
+# ─── Xtext / Xtend generated artefacts ───────────────────────────────────────
+# src-gen/ and xtend-gen/ are intentionally committed so that reviewers can
+# import the projects into Eclipse without running the MWE2 workflow first.
+# Uncomment the two lines below if your team prefers to regenerate on import:
+#src-gen/
+#xtend-gen/
+
+# Xtext binary caches (always regenerated — never commit)
+**/*.xtextbin
+**/*.xtendbin
+**/*._trace
+
+# ─── Eclipse workspace metadata ──────────────────────────────────────────────
+.metadata/
+.recommenders/
+*.pydevproject
+*.factorypath
+# NOTE: .project, .classpath, and .settings/ are intentionally KEPT.
+# They define the project structure and encoding required for correct import.
+
+# ─── Native libraries — keep Z3 only ─────────────────────────────────────────
+*.dll
+*.so
+*.dylib
+*.lib
+!com.example.xai.dsl/lib/libz3.dll
+!com.example.xai.dsl/lib/libz3java.dll
+!com.example.xai.dsl/lib/libz3.so
+!com.example.xai.dsl/lib/libz3java.so
+!com.example.xai.dsl/lib/libz3.dylib
+!com.example.xai.dsl/lib/libz3java.dylib
+
+# ─── JAR files — keep Z3 API jar only ────────────────────────────────────────
+*.jar
+!com.example.xai.dsl/lib/com.microsoft.z3.jar
+
+# ─── OS artefacts ────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ─── Python / Jupyter ────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.ipynb_checkpoints/
+
+# ─── IDE (IntelliJ, VS Code) ─────────────────────────────────────────────────
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+*.suo
+*.sln
+
+# ─── Logs — keep scenario generation reports (evaluation artefacts) ──────────
+*.log
+!evaluation-scenarios/scenarios/**/*_generation_report.log

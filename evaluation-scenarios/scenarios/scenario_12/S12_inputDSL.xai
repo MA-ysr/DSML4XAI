@@ -1,0 +1,5 @@
+model ScenarioModel12
+type RandomForest
+for user UserTest
+  expertise = Intermediate
+  format = [plainText]

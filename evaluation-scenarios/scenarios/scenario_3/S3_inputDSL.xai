@@ -1,0 +1,12 @@
+model ScenarioModel3
+type RandomForest
+for user UserRF
+  expertise = Intermediate
+  format = [plainText, table, visual]
+  details = high
+  purpose = general
+data dataset
+  path = "data/breast_cancer.csv"
+  format = CSV
+  target = "target"
+explain FeatureImportance

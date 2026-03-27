@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated config -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="com.example.xai.model.xaiConfig.presentation.XaiConfigModelWizardID"
+            name="%_UI_XaiConfigModelWizard_label"
+            class="com.example.xai.model.xaiConfig.presentation.XaiConfigModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/XaiConfigModelFile.gif">
+         <description>%_UI_XaiConfigModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated config -->
+      <editor
+            id="com.example.xai.model.xaiConfig.presentation.XaiConfigEditorID"
+            name="%_UI_XaiConfigEditor_label"
+            icon="icons/full/obj16/XaiConfigModelFile.gif"
+            extensions="xaiconfig"
+            class="com.example.xai.model.xaiConfig.presentation.XaiConfigEditor"
+            contributorClass="com.example.xai.model.xaiConfig.presentation.XaiConfigActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated xai -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="com.example.xai.model.explainableAI.presentation.explainableAIModelWizardID"
+            name="%_UI_explainableAIModelWizard_label"
+            class="com.example.xai.model.explainableAI.presentation.explainableAIModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/explainableAIModelFile.gif">
+         <description>%_UI_explainableAIModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated xai -->
+      <editor
+            id="com.example.xai.model.explainableAI.presentation.explainableAIEditorID"
+            name="%_UI_explainableAIEditor_label"
+            icon="icons/full/obj16/explainableAIModelFile.gif"
+            extensions="explainableai"
+            class="com.example.xai.model.explainableAI.presentation.explainableAIEditor"
+            contributorClass="com.example.xai.model.explainableAI.presentation.explainableAIActionBarContributor">
+      </editor>
+   </extension>
+</plugin>

@@ -1,0 +1,8 @@
+model ScenarioModel7
+type LogisticRegression
+for user UserAuto
+  expertise = Beginner
+data dataset
+  path = "data/breast_cancer.csv"
+  format = CSV
+  target = "target"

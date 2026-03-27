@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="xaiConfig" nsURI="http://example.org/xaiConfig" nsPrefix="xaiConfig">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Configuration">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="UniqueModelNames UniqueMethodNames UniqueDatasetTypeNames UniqueOutputFormatNames UniquePurposeNames UniqueExpertiseRanks UniqueDetailsRanks"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="UniqueModelNames" value="&#xA;&#x9;&#x9;  models->collect(m | m.name.toLower())->isUnique(x | x)"/>
+      <details key="UniqueMethodNames" value="&#xA;&#x9;&#x9;  methods->collect(m | m.name.toLower())->isUnique(x | x)"/>
+      <details key="UniqueDatasetTypeNames" value="&#xA;&#x9;&#x9;  datasetTypes->collect(d | d.name.toLower())->isUnique(x | x)"/>
+      <details key="UniqueOutputFormatNames" value="&#xA;&#x9;&#x9;  outputFormats->collect(f | f.name.toLower())->isUnique(x | x)"/>
+      <details key="UniquePurposeNames" value="&#xA;&#x9;&#x9;  purposes->collect(p | p.name.toLower())->isUnique(x | x)"/>
+      <details key="UniqueExpertiseRanks" value="&#xA;&#x9;&#x9;  expertiseLevels->isUnique(e | e.rank)"/>
+      <details key="UniqueDetailsRanks" value="&#xA;&#x9;&#x9;  detailsLevels->isUnique(d | d.rank)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expertiseLevels" upperBound="-1"
+        eType="#//ExpertiseLevel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="detailsLevels" upperBound="-1"
+        eType="#//DetailsLevel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputFormats" upperBound="-1"
+        eType="#//OutputFormat" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="purposes" upperBound="-1"
+        eType="#//Purpose" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debugTechniques" upperBound="-1"
+        eType="#//DebugTechnique" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datasetTypes" upperBound="-1"
+        eType="#//DatasetType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trainingPolicies" upperBound="-1"
+        eType="#//TrainingPolicy" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
+        eType="#//AIModel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="methods" upperBound="-1"
+        eType="#//ExplanationMethod" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpertiseLevel">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="PositiveRank"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="PositiveRank" value="&#xA;  &#x9;&#x9;&#x9;rank > 0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rank" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DetailsLevel">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="PositiveRank"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="PositiveRank" value="&#xA;  &#x9;&#x9;&#x9;rank > 0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rank" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputFormat">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Purpose">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DebugTechnique">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DatasetType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiresTargetColumn" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiredPackages" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TrainingPolicy">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="ScalerRequiredWhenNormalizationEnabled"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="ScalerRequiredWhenNormalizationEnabled" value="&#xA;&#x9;&#x9;  enableNormalization implies&#xA;&#x9;&#x9;    (not scalerClassPath.oclIsUndefined() and scalerClassPath &lt;> '')"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enableNormalization" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scalerClassPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="useStratification" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiredPackages" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModel">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="AllowedMethodsNotEmpty AcceptedDatasetTypesNotEmpty UniqueParameterKeys"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="AllowedMethodsNotEmpty" value="&#xA;&#x9;&#x9;  allowedMethods->notEmpty()"/>
+      <details key="AcceptedDatasetTypesNotEmpty" value="&#xA;&#x9;&#x9;  acceptedDatasetTypes->notEmpty()"/>
+      <details key="UniqueParameterKeys" value="&#xA;&#x9;&#x9;  parameters->collect(p | p.key.toLower())->isUnique(x | x)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="classPath" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiredPackages" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trainingPolicy" eType="#//TrainingPolicy"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="acceptedDatasetTypes" upperBound="-1"
+        eType="#//DatasetType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Parameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allowedMethods" upperBound="-1"
+        eType="#//ExplanationMethod"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExplanationMethod">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="DefaultFormatMustBeSupported SupportedFormatsNotEmpty DebugPurposeExpectedWhenDebugTechniquesExist ScopeValueIsControlled"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="DefaultFormatMustBeSupported" value="&#xA;&#x9;&#x9;  supportedFormats->includes(defaultFormat)"/>
+      <details key="SupportedFormatsNotEmpty" value="&#xA;&#x9;&#x9;  supportedFormats->notEmpty()"/>
+      <details key="DebugPurposeExpectedWhenDebugTechniquesExist" value="&#xA;&#x9;&#x9;  debugTechniques->notEmpty() implies&#xA;&#x9;&#x9;    recommendedPurposes->exists(p | p.name.toLower() = 'debugging')"/>
+      <details key="ScopeValueIsControlled" value="&#xA;&#x9;&#x9;  scope = 'local' or scope = 'global' or scope = 'local+global'"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scope" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="implementationClassPath"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiredPackages" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="minExpertise" lowerBound="1"
+        eType="#//ExpertiseLevel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedFormats" lowerBound="1"
+        upperBound="-1" eType="#//OutputFormat"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultFormat" lowerBound="1"
+        eType="#//OutputFormat"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="recommendedPurposes" upperBound="-1"
+        eType="#//Purpose"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debugTechniques" upperBound="-1"
+        eType="#//DebugTechnique"/>
+  </eClassifiers>
+</ecore:EPackage>

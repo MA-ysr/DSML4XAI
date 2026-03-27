@@ -1,0 +1,12 @@
+model ScenarioModel6
+type KNN
+for user UserKNN
+  expertise = Intermediate
+  format = [plainText, table, visual]
+  details = medium
+  purpose = general
+data dataset
+  path = "data/breast_cancer.csv"
+  format = CSV
+  target = "target"
+explain ICE

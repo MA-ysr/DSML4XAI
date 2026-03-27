@@ -1,0 +1,9 @@
+model ScenarioModel13
+type GBM
+for user UserTest
+  expertise = Intermediate
+  format = [plainText]
+data dataset
+  path = "data/breast_cancer.csv"
+  format = CSV
+  target = "target"

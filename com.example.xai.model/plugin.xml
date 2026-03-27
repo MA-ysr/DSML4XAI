@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated xai -->
+      <package
+            uri="http://example.org/explainableAI"
+            class="com.example.xai.model.explainableAI.explainableAIPackage"
+            genModel="model/xai.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated config -->
+      <package
+            uri="http://example.org/xaiConfig"
+            class="com.example.xai.model.xaiConfig.XaiConfigPackage"
+            genModel="model/config.genmodel"/>
+   </extension>
+
+</plugin>

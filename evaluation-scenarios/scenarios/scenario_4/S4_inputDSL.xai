@@ -1,0 +1,12 @@
+model ScenarioModel4
+type LogisticRegression
+for user UserLR
+  expertise = Advanced
+  format = [plainText, table, visual]
+  details = medium
+  purpose = justification
+data dataset
+  path = "data/banknote.csv"
+  format = CSV
+  target = "class"
+explain SHAP

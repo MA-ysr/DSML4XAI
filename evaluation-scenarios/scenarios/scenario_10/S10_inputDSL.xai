@@ -1,0 +1,10 @@
+model ScenarioModel10
+type DecisionTree
+for user UserJSON
+  expertise = Intermediate
+  format = [plainText]
+  purpose = learning
+data dataset
+  path = "data/breast_cancer.json"
+  format = JSON
+  target = "target"

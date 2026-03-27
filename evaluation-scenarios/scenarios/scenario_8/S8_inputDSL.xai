@@ -1,0 +1,11 @@
+model ScenarioModel8
+type RandomForest
+for user UserAutoAdv
+  expertise = Advanced
+  format = [visual]
+  details = high
+  purpose = general
+data dataset
+  path = "data/breast_cancer.csv"
+  format = CSV
+  target = "target"

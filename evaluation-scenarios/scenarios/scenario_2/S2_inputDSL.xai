@@ -1,0 +1,12 @@
+model ScenarioModel2
+type MLPClassifier
+for user UserDebug
+  expertise = Advanced
+  format = [plainText, visual]
+  details = medium
+  purpose = debugging
+data dataset
+  path = "data/breast_cancer.csv"
+  format = CSV
+  target = "target"
+explain LIME

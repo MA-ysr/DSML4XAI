@@ -1,0 +1,11 @@
+model ScenarioModel11
+type SVM
+for user UserLIB
+  expertise = Intermediate
+  format = [plainText]
+  details = low
+  purpose = general
+data dataset
+  path = "data/heart_scale"
+  format = LIBSVM
+explain LIME

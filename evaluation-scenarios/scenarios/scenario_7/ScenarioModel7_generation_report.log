@@ -1,0 +1,13 @@
+[INFO] Generation report created for model: ScenarioModel7
+[INFO] Generation start: 2026-03-23 15:54:32.589
+[INFO] Resolved AI model: LogisticRegression
+[INFO] Training policy: NormalizedClassification
+[INFO] Resolved explanation method: FeatureImportance (auto-selected)
+[INFO] Implementation binding: com.example.xai.generator.templates.FeatureImportanceTemplate
+[INFO] Default format applied: [plainText]
+[INFO] Default details applied: low
+[INFO] Default purpose applied: general
+[INFO] Required Python packages: scikit-learn, pandas, matplotlib
+[INFO] Notebook generated successfully: ScenarioModel7.ipynb
+[INFO] Generation end: 2026-03-23 15:54:32.594
+[INFO] Generation time (ms): 5

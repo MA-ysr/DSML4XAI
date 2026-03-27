@@ -1,0 +1,10 @@
+[INFO] Generation report created for model: ScenarioModel9
+[INFO] Generation start: 2026-03-23 16:06:07.525
+[INFO] Resolved AI model: RandomForest
+[INFO] Training policy: BasicClassification
+[INFO] Resolved explanation method: FeatureImportance (explicit)
+[INFO] Implementation binding: com.example.xai.generator.templates.FeatureImportanceTemplate
+[INFO] Required Python packages: scikit-learn, pandas, pyarrow, matplotlib
+[INFO] Notebook generated successfully: ScenarioModel9.ipynb
+[INFO] Generation end: 2026-03-23 16:06:07.528
+[INFO] Generation time (ms): 3

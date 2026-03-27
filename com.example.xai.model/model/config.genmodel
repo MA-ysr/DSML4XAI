@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.example.xai.model/src" modelPluginID="com.example.xai.model"
+    modelName="Config" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="21.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>config.ecore</foreignModel>
+  <genPackages prefix="XaiConfig" basePackage="com.example.xai.model" disposableProviderFactory="true"
+      ecorePackage="config.ecore#/">
+    <genClasses ecoreClass="config.ecore#//Configuration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//Configuration/expertiseLevels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//Configuration/detailsLevels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//Configuration/outputFormats"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//Configuration/purposes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//Configuration/debugTechniques"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//Configuration/datasetTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//Configuration/trainingPolicies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//Configuration/models"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//Configuration/methods"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//ExpertiseLevel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ExpertiseLevel/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ExpertiseLevel/rank"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//DetailsLevel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//DetailsLevel/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//DetailsLevel/rank"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//OutputFormat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//OutputFormat/name"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//Purpose">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Purpose/name"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//DebugTechnique">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//DebugTechnique/name"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//DatasetType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//DatasetType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//DatasetType/requiresTargetColumn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//DatasetType/requiredPackages"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//TrainingPolicy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//TrainingPolicy/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//TrainingPolicy/enableNormalization"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//TrainingPolicy/scalerClassPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//TrainingPolicy/useStratification"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//TrainingPolicy/requiredPackages"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//AIModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//AIModel/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//AIModel/classPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//AIModel/requiredPackages"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//AIModel/trainingPolicy"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//AIModel/acceptedDatasetTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//AIModel/parameters"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//AIModel/allowedMethods"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Parameter/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Parameter/value"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//ExplanationMethod">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ExplanationMethod/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ExplanationMethod/scope"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ExplanationMethod/implementationClassPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//ExplanationMethod/requiredPackages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference config.ecore#//ExplanationMethod/minExpertise"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//ExplanationMethod/supportedFormats"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//ExplanationMethod/defaultFormat"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//ExplanationMethod/recommendedPurposes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//ExplanationMethod/debugTechniques"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

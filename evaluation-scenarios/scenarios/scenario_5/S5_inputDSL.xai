@@ -1,0 +1,12 @@
+model ScenarioModel5
+type DecisionTree
+for user UserTree
+  expertise = Intermediate
+  format = [plainText, visual]
+  details = medium
+  purpose = learning
+data dataset
+  path = "data/banknote.csv"
+  format = CSV
+  target = "class"
+explain PDP

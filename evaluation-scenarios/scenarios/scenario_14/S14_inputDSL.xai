@@ -1,0 +1,10 @@
+model ScenarioModel14
+type RandomForest
+for user UserTest
+  expertise = Intermediate
+  format = [plainText]
+data dataset
+  path = "data/breast_cancer.csv"
+  format = CSV
+  target = "target"
+explain GradCAM

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xaiConfig:Configuration
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xaiConfig="http://example.org/xaiConfig">
+  <expertiseLevels
+      xmi:id="Beginner"
+      name="Beginner"
+      rank="1"/>
+  <expertiseLevels
+      xmi:id="Intermediate"
+      name="Intermediate"
+      rank="2"/>
+  <expertiseLevels
+      xmi:id="Advanced"
+      name="Advanced"
+      rank="3"/>
+  <detailsLevels
+      xmi:id="Low"
+      name="low"
+      rank="1"/>
+  <detailsLevels
+      xmi:id="Medium"
+      name="medium"
+      rank="2"/>
+  <detailsLevels
+      xmi:id="High"
+      name="high"
+      rank="3"/>
+  <outputFormats
+      xmi:id="PlainText"
+      name="plainText"/>
+  <outputFormats
+      xmi:id="Table"
+      name="table"/>
+  <outputFormats
+      xmi:id="Visual"
+      name="visual"/>
+  <purposes
+      xmi:id="General"
+      name="general"/>
+  <purposes
+      xmi:id="Learning"
+      name="learning"/>
+  <purposes
+      xmi:id="Debugging"
+      name="debugging"/>
+  <purposes
+      xmi:id="Justification"
+      name="justification"/>
+  <debugTechniques
+      xmi:id="ConfusionMatrix"
+      name="ConfusionMatrix"/>
+  <debugTechniques
+      xmi:id="ClassificationReport"
+      name="ClassificationReport"/>
+  <debugTechniques
+      xmi:id="MisclassifiedInstanceSelection"
+      name="MisclassifiedInstanceSelection"/>
+  <debugTechniques
+      xmi:id="LowConfidenceInstanceSelection"
+      name="LowConfidenceInstanceSelection"/>
+  <datasetTypes
+      xmi:id="CSVType"
+      name="CSV"
+      requiresTargetColumn="true">
+    <requiredPackages>pandas</requiredPackages>
+  </datasetTypes>
+  <datasetTypes
+      xmi:id="ParquetType"
+      name="PARQUET"
+      requiresTargetColumn="true">
+    <requiredPackages>pandas</requiredPackages>
+    <requiredPackages>pyarrow</requiredPackages>
+  </datasetTypes>
+  <datasetTypes
+      xmi:id="JsonType"
+      name="JSON"
+      requiresTargetColumn="true">
+    <requiredPackages>pandas</requiredPackages>
+  </datasetTypes>
+  <datasetTypes
+      xmi:id="LibsvmType"
+      name="LIBSVM">
+    <requiredPackages>scikit-learn</requiredPackages>
+  </datasetTypes>
+  <datasetTypes
+      xmi:id="ImageDirType"
+      name="IMAGE_DIR"/>
+  <trainingPolicies
+      xmi:id="BasicClassification"
+      name="BasicClassification"/>
+  <trainingPolicies
+      xmi:id="NormalizedClassification"
+      name="NormalizedClassification"
+      enableNormalization="true"
+      scalerClassPath="sklearn.preprocessing.StandardScaler"/>
+  <models name="DecisionTree"
+      classPath="sklearn.tree.DecisionTreeClassifier"
+      trainingPolicy="BasicClassification"
+      acceptedDatasetTypes="CSVType ParquetType JsonType LibsvmType"
+      allowedMethods="FeatureImportance PDP LIME SHAP ICE">
+    <requiredPackages>scikit-learn</requiredPackages>
+    <parameters
+        key="random_state"
+        value="0"/>
+  </models>
+  <models name="RandomForest"
+      classPath="sklearn.ensemble.RandomForestClassifier"
+      trainingPolicy="BasicClassification"
+      acceptedDatasetTypes="CSVType ParquetType JsonType LibsvmType"
+      allowedMethods="FeatureImportance PDP LIME SHAP ICE">
+    <requiredPackages>scikit-learn</requiredPackages>
+    <parameters
+        key="random_state"
+        value="0"/>
+  </models>
+  <models name="SVM"
+      classPath="sklearn.svm.SVC"
+      trainingPolicy="NormalizedClassification"
+      acceptedDatasetTypes="CSVType ParquetType JsonType LibsvmType"
+      allowedMethods="LIME SHAP PDP ICE">
+    <requiredPackages>scikit-learn</requiredPackages>
+    <parameters
+        key="probability"
+        value="True"/>
+    <parameters
+        key="random_state"
+        value="0"/>
+  </models>
+  <models name="MLPClassifier"
+      classPath="sklearn.neural_network.MLPClassifier"
+      trainingPolicy="NormalizedClassification"
+      acceptedDatasetTypes="CSVType ParquetType JsonType LibsvmType"
+      allowedMethods="LIME SHAP PDP ICE">
+    <requiredPackages>scikit-learn</requiredPackages>
+    <parameters
+        key="max_iter"
+        value="1000"/>
+    <parameters
+        key="random_state"
+        value="0"/>
+  </models>
+  <models name="KNN"
+      classPath="sklearn.neighbors.KNeighborsClassifier"
+      trainingPolicy="NormalizedClassification"
+      acceptedDatasetTypes="CSVType ParquetType JsonType LibsvmType"
+      allowedMethods="PDP ICE LIME">
+    <requiredPackages>scikit-learn</requiredPackages>
+    <parameters
+        key="n_neighbors"
+        value="5"/>
+  </models>
+  <models name="LogisticRegression"
+      classPath="sklearn.linear_model.LogisticRegression"
+      trainingPolicy="NormalizedClassification"
+      acceptedDatasetTypes="CSVType ParquetType JsonType LibsvmType"
+      allowedMethods="FeatureImportance PDP LIME SHAP ICE">
+    <requiredPackages>scikit-learn</requiredPackages>
+    <parameters
+        key="max_iter"
+        value="1000"/>
+    <parameters
+        key="random_state"
+        value="0"/>
+  </models>
+  <methods xmi:id="LIME"
+      name="LIME"
+      scope="local"
+      implementationClassPath="com.example.xai.generator.templates.LimeTemplate"
+      minExpertise="Beginner"
+      supportedFormats="PlainText Table Visual"
+      defaultFormat="PlainText"
+      recommendedPurposes="Learning Debugging Justification General"
+      debugTechniques="ConfusionMatrix ClassificationReport MisclassifiedInstanceSelection LowConfidenceInstanceSelection">
+    <requiredPackages>lime</requiredPackages>
+    <requiredPackages>matplotlib</requiredPackages>
+    <requiredPackages>pandas</requiredPackages>
+  </methods>
+  <methods xmi:id="SHAP"
+      name="SHAP"
+      scope="local+global"
+      implementationClassPath="com.example.xai.generator.templates.ShapTemplate"
+      minExpertise="Intermediate"
+      supportedFormats="PlainText Table Visual"
+      defaultFormat="PlainText"
+      recommendedPurposes="General Debugging Justification"
+      debugTechniques="ConfusionMatrix ClassificationReport MisclassifiedInstanceSelection LowConfidenceInstanceSelection">
+    <requiredPackages>shap</requiredPackages>
+    <requiredPackages>matplotlib</requiredPackages>
+    <requiredPackages>pandas</requiredPackages>
+  </methods>
+  <methods xmi:id="PDP"
+      name="PDP"
+      scope="global"
+      implementationClassPath="com.example.xai.generator.templates.PdpTemplate"
+      minExpertise="Intermediate"
+      supportedFormats="PlainText Table Visual"
+      defaultFormat="Visual"
+      recommendedPurposes="General Learning Justification">
+    <requiredPackages>matplotlib</requiredPackages>
+    <requiredPackages>pandas</requiredPackages>
+  </methods>
+  <methods xmi:id="ICE"
+      name="ICE"
+      scope="global"
+      implementationClassPath="com.example.xai.generator.templates.IceTemplate"
+      minExpertise="Intermediate"
+      supportedFormats="PlainText Table Visual"
+      defaultFormat="Visual"
+      recommendedPurposes="General Debugging Learning"
+      debugTechniques="LowConfidenceInstanceSelection">
+    <requiredPackages>matplotlib</requiredPackages>
+    <requiredPackages>pandas</requiredPackages>
+  </methods>
+  <methods xmi:id="FeatureImportance"
+      name="FeatureImportance"
+      scope="global"
+      implementationClassPath="com.example.xai.generator.templates.FeatureImportanceTemplate"
+      minExpertise="Beginner"
+      supportedFormats="PlainText Table Visual"
+      defaultFormat="PlainText"
+      recommendedPurposes="General Debugging Justification Learning"
+      debugTechniques="ConfusionMatrix ClassificationReport">
+    <requiredPackages>matplotlib</requiredPackages>
+    <requiredPackages>pandas</requiredPackages>
+  </methods>
+</xaiConfig:Configuration>

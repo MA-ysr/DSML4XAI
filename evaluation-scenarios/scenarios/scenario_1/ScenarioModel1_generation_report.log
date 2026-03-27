@@ -1,0 +1,11 @@
+[INFO] Generation report created for model: ScenarioModel1
+[INFO] Generation start: 2026-03-23 14:59:07.790
+[INFO] Resolved AI model: MLPClassifier
+[INFO] Training policy: NormalizedClassification
+[INFO] Resolved explanation method: LIME (auto-selected)
+[INFO] Implementation binding: com.example.xai.generator.templates.LimeTemplate
+[INFO] Default details applied: low
+[INFO] Required Python packages: scikit-learn, pandas, lime, matplotlib
+[INFO] Notebook generated successfully: ScenarioModel1.ipynb
+[INFO] Generation end: 2026-03-23 14:59:07.794
+[INFO] Generation time (ms): 4

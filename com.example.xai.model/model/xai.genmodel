@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/com.example.xai.model/src-gen" creationIcons="false"
+    editDirectory="/com.example.xai.model.edit/src-gen" editorDirectory="/com.example.xai.model.editor/src-gen"
+    modelPluginID="com.example.xai.model" modelName="Xai" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="21.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>xai.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="explainableAI" basePackage="com.example.xai.model" disposableProviderFactory="true"
+      ecorePackage="xai.ecore#/">
+    <genClasses ecoreClass="xai.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xai.ecore#//Model/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xai.ecore#//Model/modelType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xai.ecore#//Model/method"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xai.ecore#//Model/user"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xai.ecore#//Model/dataset"/>
+    </genClasses>
+    <genClasses ecoreClass="xai.ecore#//User">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xai.ecore#//User/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xai.ecore#//User/expertise"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xai.ecore#//User/format"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xai.ecore#//User/details"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xai.ecore#//User/purpose"/>
+    </genClasses>
+    <genClasses ecoreClass="xai.ecore#//Dataset">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xai.ecore#//Dataset/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xai.ecore#//Dataset/format"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xai.ecore#//Dataset/targetColumn"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

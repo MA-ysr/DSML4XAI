@@ -1,0 +1,10 @@
+model ScenarioModel15
+type RandomForest
+for user UserTest
+  expertise = Beginner
+  format = [plainText]
+data dataset
+  path = "data/breast_cancer.csv"
+  format = CSV
+  target = "target"
+explain SHAP

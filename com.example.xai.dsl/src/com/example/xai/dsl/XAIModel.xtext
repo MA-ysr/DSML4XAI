@@ -1,0 +1,32 @@
+grammar com.example.xai.XAIModel with org.eclipse.xtext.common.Terminals
+
+import "http://example.org/explainableAI" as xai
+
+generate xAIModel "http://www.example.org/xai/DSL"
+
+Root:
+    model=ModelSpec
+;
+
+ModelSpec returns xai::Model:
+    'model' name=ID
+    'type' modelType=ID
+    'for' user=UserSpec
+    'data' dataset=DatasetSpec
+    ('explain' method=ID)?
+;
+
+UserSpec returns xai::User:
+    'user' name=ID
+    'expertise' '=' expertise=ID
+    ('format' '=' '[' format+=ID (',' format+=ID)* ']')?
+    ('details' '=' details=ID)?
+    ('purpose' '=' purpose=ID)?
+;
+
+DatasetSpec returns xai::Dataset:
+    'dataset'
+      'path' '=' path=STRING
+      'format' '=' format=ID
+      ('target' '=' targetColumn=STRING)?
+;

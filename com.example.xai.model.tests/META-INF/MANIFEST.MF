@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.example.xai.model.tests;singleton:=true
+Automatic-Module-Name: com.example.xai.model.tests
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: com.example.xai.model.xaiConfig.tests
+Require-Bundle: org.eclipse.core.runtime,
+ com.example.xai.model;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.junit;visibility:=reexport
+Bundle-ActivationPolicy: lazy
