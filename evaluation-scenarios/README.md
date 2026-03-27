@@ -1,74 +1,107 @@
 # Evaluation Scenarios
 
-This folder contains the datasets and executable test scenarios used to validate **DSML4XAI**.
-Each scenario folder includes:
+This folder contains the executable test scenarios used to evaluate **DSML4XAI**.
+Each successful scenario folder contains:
 
 - an input DSML specification (`*.xai`)
 - the generated Jupyter notebook (`*.ipynb`)
 - an execution notebook with outputs preserved (`*_execution.ipynb`)
 - a generation report (`*_generation_report.log`)
 
-## Scope
+Failure scenarios contain only the input specification (`*.xai`); no notebook is produced because the verification layer rejects the specification before generation is attempted.
 
-The scenarios in this folder are **valid scenarios that satisfy the validator rules**. Cases that violate validation rules are intentionally excluded here because the generator is designed to stop before notebook generation when validation fails.
+---
 
 ## Folder Structure
 
-```text
-evaluation-scenarios/
-├── datasets/
-└── scenarios/
-    ├── scenario_1/
-    ├── scenario_2/
-    ├── ...
-    └── scenario_11/
 ```
+evaluation-scenarios/
+├── datasets/                  # Datasets used in scenarios (see Dataset Provenance below)
+└── scenarios/
+    ├── scenario_1/            # S1  — success
+    ├── scenario_2/            # S2  — success
+    ├── ...
+    ├── scenario_11/           # S11 — success
+    ├── scenario_12/           # S12 — failure (syntactic violation)
+    ├── scenario_13/           # S13 — failure (unknown model type)
+    ├── scenario_14/           # S14 — failure (unknown explanation method)
+    └── scenario_15/           # S15 — failure (expertise incompatibility)
+```
+
+---
 
 ## Dataset Provenance
 
-The datasets used in the scenarios come from official or canonical public sources.
-Some files are direct downloads, while others are **derived exports** (e.g., CSV/JSON/PARQUET) produced from the same official source for dataset-type coverage.
-
-| Dataset file(s) | Type(s) used | Provenance |
+| Dataset file(s) | Format(s) used | Provenance |
 |---|---|---|
-| `breast_cancer.csv`, `breast_cancer.parquet`, `breast_cancer.json` | CSV, PARQUET, JSON | Derived from the **Breast Cancer Wisconsin (Diagnostic)** dataset available through the official scikit-learn loader and originally sourced from UCI. Official reference: https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html |
-| `banknote.csv` | CSV | Derived from the **Banknote Authentication** dataset from the UCI Machine Learning Repository. Official reference: https://archive.ics.uci.edu/dataset/267/banknote+authentication |
-| `heart_scale` | LIBSVM | Directly taken from the official LIBSVM datasets page. Official reference: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/heart_scale |
+| `breast_cancer.csv`, `breast_cancer.parquet`, `breast_cancer.json` | CSV, PARQUET, JSON | Derived from the **Breast Cancer Wisconsin (Diagnostic)** dataset via the scikit-learn loader. Reference: https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html |
+| `banknote.csv` | CSV | **Banknote Authentication** dataset from UCI. Reference: https://archive.ics.uci.edu/dataset/267/banknote+authentication |
+| `heart_scale` | LIBSVM | Taken from the official LIBSVM datasets page. Reference: https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/heart_scale |
+
+---
+
+## Abbreviations
+
+| Symbol | Meaning |
+|--------|---------|
+| B / I / A | Beginner / Intermediate / Advanced |
+| PT / TB / VS | `plainText` / `table` / `visual` |
+| def | attribute omitted in the DSL input; resolved through defaults |
+| learn / debug / just / gen | `learning` / `debugging` / `justification` / `general` |
+| L1 / L2 / L4 | Verification layer: 1 = syntactic, 2 = static semantic, 4 = Z3 formal |
+
+---
 
 ## Scenario Summary
 
-Abbreviations used below:
+### Positive Scenarios (S1–S11) — Specification valid, notebook generated
 
-- **B / I / A** = Beginner / Intermediate / Advanced
-- **PT / TB / VS** = `plainText` / `table` / `visual`
-- **def** = omitted in the DSML input and resolved through defaults
-- **learn / debug / just / gen** = `learning` / `debugging` / `justification` / `general`
+| ID | AI Model | Dataset | Exp. | Format(s) | Details | Purpose | Method (input → resolved) | Defaults applied | Exec. | Conf. |
+|----|----------|---------|------|-----------|---------|---------|--------------------------|-----------------|-------|-------|
+| S1 | MLPClassifier | breast_cancer (CSV) | B | PT | def | learn | auto → LIME | details | success | Full |
+| S2 | MLPClassifier | breast_cancer (CSV) | A | PT, VS | med | debug | LIME | — | success | Full |
+| S3 | RandomForest | breast_cancer (CSV) | I | PT, TB, VS | high | gen | FeatureImportance | — | success | Full |
+| S4 | LogisticRegression | banknote (CSV) | A | PT, TB, VS | med | just | SHAP | — | success | Full |
+| S5 | DecisionTree | banknote (CSV) | I | PT, VS | med | learn | PDP | — | success | Full |
+| S6 | KNN | breast_cancer (CSV) | I | PT, TB, VS | med | gen | ICE | — | success | Full |
+| S7 | LogisticRegression | breast_cancer (CSV) | B | def | def | def | auto → FeatureImportance | format, details, purpose | success | Full |
+| S8 | RandomForest | breast_cancer (CSV) | A | VS | high | gen | auto → PDP | — | success | Full |
+| S9 | RandomForest | breast_cancer (PARQUET) | I | PT, TB | med | gen | FeatureImportance | — | success | Full |
+| S10 | DecisionTree | breast_cancer (JSON) | I | PT | def | learn | auto → PDP | details | success | Full |
+| S11 | SVM | heart_scale (LIBSVM) | I | PT | low | gen | LIME | — | success | Full |
 
-| Scenario | AI model | Dataset | User preferences (Exp / Formats / Details / Purpose) | Method (input → resolved) | Defaults applied | Generation time (ms) | Execution |
-|---|---|---|---|---|---|---:|---|
-| S1 | MLPClassifier | breast_cancer.csv (CSV) | B / [PT] / def / learn | auto→LIME | details | 4 | success |
-| S2 | MLPClassifier | breast_cancer.csv (CSV) | A / [PT,VS] / med / debug | LIME | - | 4 | success |
-| S3 | RandomForest | breast_cancer.csv (CSV) | I / [PT,TB,VS] / high / gen | FeatureImportance | - | 5 | success |
-| S4 | LogisticRegression | banknote.csv (CSV) | A / [PT,TB,VS] / med / just | SHAP | - | 4 | success |
-| S5 | DecisionTree | banknote.csv (CSV) | I / [PT,VS] / med / learn | PDP | - | 7 | success |
-| S6 | KNN | breast_cancer.csv (CSV) | I / [PT,TB,VS] / med / gen | ICE | - | 17 | success |
-| S7 | LogisticRegression | breast_cancer.csv (CSV) | B / def / def / def | auto→FeatureImportance | format, details, purpose | 5 | success |
-| S8 | RandomForest | breast_cancer.csv (CSV) | A / [VS] / high / gen | auto→PDP | - | 3 | success |
-| S9 | RandomForest | breast_cancer.parquet (PARQUET) | I / [PT,TB] / med / gen | FeatureImportance | - | 3 | success |
-| S10 | DecisionTree | breast_cancer.json (JSON) | I / [PT] / def / learn | auto→PDP | details | 4 | success |
-| S11 | SVM | heart_scale (LIBSVM) | I / [PT] / low / gen | LIME | - | 18 | success |
+### Failure Scenarios (S12–S15) — Specification rejected, no notebook produced
+
+| ID | AI Model | Dataset | Exp. | Method | Violation | Rejected at | Conf. |
+|----|----------|---------|------|--------|-----------|-------------|-------|
+| S12 | RandomForest | — | I | — | Missing mandatory `data` block | L1 — Xtext parser (syntactic) | Rejected |
+| S13 | GBM | breast_cancer (CSV) | I | — | `GBM` not declared in `config.xmi` | L2 — `@Check` validator (unknown model type) | Rejected |
+| S14 | RandomForest | breast_cancer (CSV) | I | GradCAM | `GradCAM` not declared in `config.xmi` | L2 — `@Check` validator (unknown method) | Rejected |
+| S15 | RandomForest | breast_cancer (CSV) | B | SHAP | SHAP requires Intermediate (rank 2); user is Beginner (rank 1) | L4 — Z3 formal verification (unsatisfiable spec) | Rejected |
+
+---
 
 ## How to Use the Scenarios
 
-1. Open a scenario folder.
-2. Inspect the `*.xai` file to see the input specification.
-3. Inspect the generated notebook to see the notebook structure produced by the generator.
-4. Open the `*_execution.ipynb` notebook to inspect the preserved outputs.
-5. Inspect the `*_generation_report.log` file to review defaults, selected methods, required packages, and generation time.
+**Successful scenarios (S1–S11):**
 
+1. Open the scenario folder.
+2. Inspect the `*.xai` file to see the input specification.
+3. Inspect the generated `*.ipynb` notebook to see the structure produced by the generator.
+4. Open `*_execution.ipynb` to review preserved execution outputs.
+5. Inspect `*_generation_report.log` for the resolved method, applied defaults, required packages, and any warnings.
+
+**Failure scenarios (S12–S15):**
+
+1. Open the scenario folder and inspect the `*.xai` file.
+2. Load the file in the DSML4XAI editor — the violation is surfaced as an editor error or warning at the indicated verification layer.
+3. No notebook or log is produced because generation is blocked by the verification gate.
+
+---
 
 ## Notes
 
-- Successful execution in this folder indicates that notebook generation completed and the resulting notebook was run with outputs preserved.
-- Auto-selection behavior can be observed in scenarios where the explanation method is omitted (e.g., **S1**, **S7**, **S8**, **S10**).
-- Dataset-type coverage is exercised through **CSV**, **PARQUET**, **JSON**, and **LIBSVM** scenarios.
+- Auto-selection of the explanation method can be observed in **S1**, **S7**, **S8**, and **S10** (no `explain` keyword in the DSL input).
+- Default resolution (format, details, purpose) is demonstrated in **S1**, **S7**, and **S10**.
+- Dataset-type coverage spans **CSV** (S1–S8), **PARQUET** (S9), **JSON** (S10), and **LIBSVM** (S11).
+- The four failure scenarios each target a distinct verification layer, confirming that the progressive rejection strategy operates correctly at each level.
