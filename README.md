@@ -1,7 +1,5 @@
 # DSML4XAI — A Model-Driven Framework for User-Parameterized XAI Workflow Generation
 
-> Artefacts accompanying the MODELS 2026 Foundations Track submission.
-
 DSML4XAI is a textual domain-specific modeling language and model-driven framework that generates user-aware, executable XAI (Explainable AI) workflows from high-level specifications. Users declare an AI model, a dataset, a user context (expertise level, preferred output format, explanation purpose, detail level), and optionally an explicit explanation method. The framework validates the specification against a configuration repository, auto-selects a compatible explanation method when needed, and generates a ready-to-run Jupyter Notebook tailored to the declared user profile.
 
 ---
